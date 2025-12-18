@@ -16,7 +16,7 @@ The workflow produces seasonal NDMI composites, spectral signatures, and a summe
 - NDMI change detection highlights strong winter inundation on northern Liberty Island
 ## Repository Structure
 gee_scripts/     - GEE JavaScript code
-arcgis_outputs/  - Final ArcGIS Pro maps
+Maps_Images/  - Final ArcGIS Pro maps
 poster/          - Final project poster (PDF)
 images/          - Supporting figures for README
 ## Poster
