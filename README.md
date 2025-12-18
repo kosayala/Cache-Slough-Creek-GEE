@@ -15,10 +15,10 @@ The workflow produces seasonal NDMI composites, spectral signatures, and a summe
 - Spectral signatures separate permanent water, wetland vegetation, and upland areas
 - NDMI change detection highlights strong winter inundation on northern Liberty Island
 ## Repository Structure
-gee_scripts/     - GEE JavaScript code
-Maps_Images/     - Final ArcGIS Pro maps
-Poster/          - Final project poster (PDF)
-Charts/          - Supporting figures for README
+gee_scripts/     - GEE JavaScript code  
+Maps_Images/     - Final ArcGIS Pro maps  
+Poster/          - Final project poster (PDF)  
+Charts/          - Supporting figures for README  
 ## Poster
 The full academic poster summarizing the workflow, results, and interpretation is available in:
 
