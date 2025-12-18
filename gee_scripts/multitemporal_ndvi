@@ -1,0 +1,38 @@
+// ---------- MULTITEMPORAL NDVI -------------
+// ------------------------------------------
+// for every season from years 2018 and 2024
+//
+// lets make a function for it
+// -------------------------
+// Function to compute seasonal indices
+// -------------------------
+function computeSeasonalIndices(year, season, startDate, endDate) {
+  
+  var s2Collection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+  .filterDate(startDate, endDate)
+  .filterBounds(csc)
+  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
+  .map(maskS2clouds);
+  
+  var medianImage = s2Collection.median().clip(csc);
+  
+  var ndvi = medianImage.normalizedDifference(['B8', 'B4']).rename('NDVI_' + season + '_' + year);
+  var ndmi = medianImage.normalizedDifference(['B8', 'B11']).rename('NDMI_' + season + '_' + year);
+  var ndwi = medianImage.normalizedDifference(['B3', 'B8']).rename('NDWI_' + season + '_' + year);
+  
+  return medianImage.addBands([ndvi, ndmi, ndwi]);
+}
+
+// visualize NDVI
+var ndviViz = {min:-1, max:1, palette:['white', 'yellow', 'green', 'darkgreen']};
+// visualization  NDMI
+var ndmiViz = {min:-1, max:1, palette:['brown', 'lightblue', 'blue', 'darkblue']};
+// visualization NDWI
+var ndwiViz = {min:-1, max:1, palette:['brown','lightblue','blue','darkblue']};
+// True color visualization
+var rgbViz = {
+  bands: ['B4', 'B3', 'B2'],
+  min: 0,
+  max: 0.3,
+  gamma: 1.2
+};
